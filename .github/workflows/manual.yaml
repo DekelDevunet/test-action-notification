@@ -35,7 +35,7 @@ jobs:
       
       - name: send failed telegram message
         uses: appleboy/telegram-action@master
-        if: steps.deploy.outcome == 'failure' 
+        if: steps.deploy.outcome == 'FAILURE' 
         with:
           to: ${{ env.TELEGRAM_CHANNEL }}
           token: ${{ secrets.TELEGRAM_SHAREITT_BOT_TOKEN }}
