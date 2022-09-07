@@ -1,0 +1,43 @@
+name: Manual
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'Env: dev'
+        required: true
+        default: 'dev'
+
+env:
+  TELEGRAM_CHANNEL: -661028488
+
+jobs:
+  manual:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Deploy to Env
+        id: deploy
+        run: |
+          sdkjfpdsjfdpsjd
+
+      - name: send success telegram message
+        uses: appleboy/telegram-action@master
+        if: steps.deploy.outcome == 'SUCCESS' 
+        with:
+          to: ${{ env.TELEGRAM_CHANNEL }}
+          token: ${{ secrets.TELEGRAM_SHAREITT_BOT_TOKEN }}
+          message: |
+            test success message
+      
+      - name: send failed telegram message
+        uses: appleboy/telegram-action@master
+        if: steps.deploy.outcome == 'FAILURE' 
+        with:
+          to: ${{ env.TELEGRAM_CHANNEL }}
+          token: ${{ secrets.TELEGRAM_SHAREITT_BOT_TOKEN }}
+          message: |
+            test failed message
+            
